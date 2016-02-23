@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}nodejs-columnify
 Version:        1.3.2
-Release:        3%{?dist}
+Release:        5%{?dist}
 Summary:        Render data in text columns, supports in-column text-wrap.
 Url:            https://github.com/timoxley/columnify
 Source0:        http://registry.npmjs.org/columnify/-/columnify-%{version}.tgz
@@ -21,6 +21,8 @@ Render data in text columns, supports in-column text-wrap.
 
 %prep
 %setup -q -n package
+
+%nodejs_fixdep strip-ansi '>= 3.0.0'
 
 %build
 #nothing to do
@@ -43,6 +45,9 @@ rm -rf %buildroot
 %doc Readme.md
 
 %changelog
+* Tue Feb 16 2016 Tomas Hrcka <thrcka@redhat.com> - 1.3.2-5
+- Fix dependency on strip-ansi 
+
 * Fri Jan 09 2015 Tomas Hrcka <thrcka@redhat.com> - 1.3.2-3
 - New upstream release 1.3.2
 
